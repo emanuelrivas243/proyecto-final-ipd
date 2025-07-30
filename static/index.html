@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predicción Iris</title>
+</head>
+<body>
+    <h1>Clasificador de Flores Iris</h1>
+    <form id="iris-form">
+        <label>Sepal Length: <input type="number" step="any" name="sepal_length" required></label><br>
+        <label>Sepal Width: <input type="number" step="any" name="sepal_width" required></label><br>
+        <label>Petal Length: <input type="number" step="any" name="petal_length" required></label><br>
+        <label>Petal Width: <input type="number" step="any" name="petal_width" required></label><br>
+        <button type="submit">Predecir</button>
+    </form>
+    <h2 id="result"></h2>
+
+    <script>
+        const form = document.getElementById('iris-form');
+        const result = document.getElementById('result');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            // Convert values to floats
+            for (let key in data) {
+                data[key] = parseFloat(data[key]);
+            }
+
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            const json = await response.json();
+            result.innerText = `Predicción: ${json.class}`;
+        });
+    </script>
+</body>
+</html>
