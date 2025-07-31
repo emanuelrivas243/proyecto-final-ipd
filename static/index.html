@@ -1,17 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Predicción Iris</title>
+    <meta charset="UTF-8">
+    <title>Clasificador de Flores Iris</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Tipografía y fondo general */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(145deg, #d6b3ff, #f2e6ff);
+            color: #4b007d;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #7a1fa2;
+            text-shadow: 1px 1px 2px #e0b3ff;
+        }
+
+        form {
+            background-color: #f8f0ff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(124, 72, 149, 0.2);
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        input[type="number"] {
+            padding: 8px;
+            border: 2px solid #c69cff;
+            border-radius: 10px;
+            background-color: #fff6ff;
+            outline: none;
+            transition: 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            border-color: #ae64ff;
+            background-color: #f5e6ff;
+        }
+
+        button {
+            padding: 10px;
+            background: linear-gradient(to right, #c69cff, #ae64ff);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #b178f0, #8e4cc8);
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #5a007a;
+        }
+
+        @media (max-width: 400px) {
+            form {
+                width: 90%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Clasificador de Flores Iris</h1>
+    <h1>Clasificador de Flores Iris 🌸</h1>
     <form id="iris-form">
-        <label>Sepal Length: <input type="number" step="any" name="sepal_length" required></label><br>
-        <label>Sepal Width: <input type="number" step="any" name="sepal_width" required></label><br>
-        <label>Petal Length: <input type="number" step="any" name="petal_length" required></label><br>
-        <label>Petal Width: <input type="number" step="any" name="petal_width" required></label><br>
+        <label>Longitud del Sépalo:
+            <input type="number" step="any" name="sepal_length" required>
+        </label>
+        <label>Ancho del Sépalo:
+            <input type="number" step="any" name="sepal_width" required>
+        </label>
+        <label>Longitud del Pétalo:
+            <input type="number" step="any" name="petal_length" required>
+        </label>
+        <label>Ancho del Pétalo:
+            <input type="number" step="any" name="petal_width" required>
+        </label>
         <button type="submit">Predecir</button>
     </form>
+
     <h2 id="result"></h2>
 
     <script>
@@ -24,19 +113,24 @@
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
 
-            // Convert values to floats
             for (let key in data) {
                 data[key] = parseFloat(data[key]);
             }
 
-            const response = await fetch('/predict', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
 
-            const json = await response.json();
-            result.innerText = `Predicción: ${json.class}`;
+                if (!response.ok) throw new Error("Error en la predicción");
+
+                const json = await response.json();
+                result.innerText = `🌼 Predicción: ${json.class}`;
+            } catch (error) {
+                result.innerText = "❌ Error al obtener la predicción.";
+            }
         });
     </script>
 </body>
