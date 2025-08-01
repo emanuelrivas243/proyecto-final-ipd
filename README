@@ -1,57 +1,77 @@
+Aquí tienes todo el contenido en una sola caja de texto para copiar y pegar:
 
+```
 # 🌸 Clasificador de Flores Iris - FastAPI + Ray
 
 Este es un proyecto de clasificación de flores Iris usando un modelo Naive Bayes de `scikit-learn`, implementado como API con `FastAPI` y ejecutado en un actor remoto de `Ray`. Incluye una interfaz web simple en HTML para realizar predicciones.
 
----
+## 📌 Características
 
-## 🚀 Instalación
+- Clasificación de flores Iris en tres especies
+- API REST con FastAPI
+- Distribución de carga con Ray
+- Interfaz web amigable
+- Fácil despliegue en la nube
 
-Sigue estos pasos para ejecutar el proyecto en tu máquina local o en un servidor como AWS EC2.
+## Instalación
 
-### 1. Clonar el repositorio
+Estos son los pasos para ejecutarlo en local o en un servidor:
+
+### Requisitos previos
+
+- Python 3.10 o superior
+- pip
+
+### Pasos de instalación
+
+1. **Clonar el repositorio**
 
 ```bash
-git clone https://github.com/tu_usuario/iris-fastapi.git
-cd iris-fastapi
+git clone https://github.com/emanuelrivas243/proyecto-final-ipd.git
+cd proyecto-final-ipd
 ```
 
+2. **Crear un ambiente virtual en Python**
 
-### 2. Crear un ambiente virtual en Python
+```bash
 python3 -m venv venv
-source venv/bin/activate    # En Windows usa: venv\Scripts\activate
+source venv/bin/activate    # En Linux/MacOS
+```
 
+3. **Instalar dependencias**
 
-### 3. Instalar dependencias
+```bash
 pip install --upgrade pip
 pip install -r requirements.txt
+```
 
+4. **Ejecutar la aplicación**
 
-### 4. Ejecutar la aplicación
+```bash
 uvicorn main:app --host 0.0.0.0 --port 8000
+```
 
-Luego abre tu navegador y entra a http://localhost:8000
+5. **Abrir en el navegador**
+
+Visita http://localhost:8000 en tu navegador.
+
+## Despliegue
 
 Este proyecto puede desplegarse fácilmente en servicios como:
 
-    AWS EC2
+- AWS EC2
+- Railway.app
+- Render.com
+- Fly.io
 
-    Railway.app
+## Tecnologías utilizadas
 
-    Render.com
+- Python 3.10
+- FastAPI
+- Ray
+- scikit-learn
+- HTML + CSS
 
-    Fly.io
-
-💡 Tecnologías utilizadas
-
-    Python 3.10
-
-    FastAPI
-
-    Ray
-
-    scikit-learn
-
-    HTML + CSS
+```
 
 
