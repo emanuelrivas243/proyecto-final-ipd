@@ -1,0 +1,57 @@
+# 🌸 Clasificador de Flores Iris - FastAPI + Ray
+
+Este es un proyecto de clasificación de flores Iris usando un modelo Naive Bayes de `scikit-learn`, implementado como API con `FastAPI` y ejecutado en un actor remoto de `Ray`. Incluye una interfaz web simple en HTML para realizar predicciones.
+
+---
+
+## 🚀 Instalación
+
+Sigue estos pasos para ejecutar el proyecto en tu máquina local o en un servidor como AWS EC2.
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/tu_usuario/iris-fastapi.git
+cd iris-fastapi
+
+
+### 2. Crear un ambiente virtual en Python
+python3 -m venv venv
+source venv/bin/activate    # En Windows usa: venv\Scripts\activate
+
+
+### 3. Instalar dependencias
+pip install --upgrade pip
+pip install -r requirements.txt
+
+
+### 4. Ejecutar la aplicación
+uvicorn main:app --host 0.0.0.0 --port 8000
+
+Luego abre tu navegador y entra a http://localhost:8000
+
+Este proyecto puede desplegarse fácilmente en servicios como:
+
+    AWS EC2
+
+    Railway.app
+
+    Render.com
+
+    Fly.io
+
+💡 Tecnologías utilizadas
+
+    Python 3.10
+
+    FastAPI
+
+    Ray
+
+    scikit-learn
+
+    HTML + CSS
+
+---
+
+
