@@ -14,6 +14,7 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local o en un servido
 ```bash
 git clone https://github.com/tu_usuario/iris-fastapi.git
 cd iris-fastapi
+```
 
 
 ### 2. Crear un ambiente virtual en Python
