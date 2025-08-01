@@ -1,3 +1,4 @@
+
 # 🌸 Clasificador de Flores Iris - FastAPI + Ray
 
 Este es un proyecto de clasificación de flores Iris usando un modelo Naive Bayes de `scikit-learn`, implementado como API con `FastAPI` y ejecutado en un actor remoto de `Ray`. Incluye una interfaz web simple en HTML para realizar predicciones.
@@ -51,7 +52,5 @@ Este proyecto puede desplegarse fácilmente en servicios como:
     scikit-learn
 
     HTML + CSS
-
----
 
 
